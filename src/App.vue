@@ -1,13 +1,46 @@
 <template>
   <div id="app" class="blue">
-
+    <nHeader @tools="changePages"></nHeader>
+    <section class="container" :class="{'hide': table}">
+      <n-add></n-add>
+    </section>
   </div>
 </template>
 
 <script>
+  import nHeader from './components/header.vue'
+  import nAdd from './components/event_add.vue'
+
   export default {
     name: 'app',
+    data () {
+      return {
+        tools: false,
+        dialog: false,
+        table: false,
+        theme: false,
+        dialog_type: '',
+        tips: '',
+        del_info: {
+          index: 0,
+          id: 0
+        }
+      }
+    },
     components: {
+      nHeader,
+      nAdd
+    },
+    methods: {
+      changePages () {
+        if (this.table) {
+          this.table = !this.table
+        } else if (this.theme) {
+          this.theme = !this.theme
+        } else {
+          this.tools = !this.tools
+        }
+      }
     }
   }
 </script>

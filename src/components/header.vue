@@ -8,7 +8,7 @@
   export default {
     methods: {
       showTools () {
-        this.$emit('tools')
+        this.$emit('tools')  // 触发当前实例上的tools事件
       }
     }
   }
