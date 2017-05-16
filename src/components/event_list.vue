@@ -7,9 +7,9 @@
     <div class="event-box" :style="{'height': 'auto', 'dispaly': 'block'}">
       <ul>
         <li class="event-list" v-for="value in getToDo">
-          <input type="checkbox" :key="value.id" @click="moveToDone(vaule.id)">
+          <input type="checkbox" :key="value.id" @click="moveToDone(value.id)">
           <div>{{value.content}}</div>
-          <button class="cancel-btn" @click="moveCancel(vaule.id)">取消</button>
+          <button class="cancel-btn" @click="moveCancel(value.id)">取消</button>
         </li>
       </ul>
     </div>
@@ -21,7 +21,7 @@
     <div class="event-box">
       <ul>
         <li class="event-list" v-for="value in getDone">
-          <input type="checkbox" :key="value.id" checked @click="moveToDo(vaule.id)">
+          <input type="checkbox" :key="value.id" checked @click="moveToDo(value.id)">
           <div>{{value.content}}</div>
           <span class="event-time">{{value.time}}</span>
         </li>
@@ -77,7 +77,7 @@
       moveToDo (id) {
         return this.$store.dispatch('eventtodo', id)
       },
-      moveDone (id) {
+      moveToDone (id) {
         return this.$store.dispatch('eventdone', id)
       },
       moveCancel (id) {

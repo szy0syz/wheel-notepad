@@ -13,7 +13,7 @@
       }
     },
     methods: {
-      submit () { // 按键上的this
+      submit () {
         let self = this
         let params = {
           id: 0,
