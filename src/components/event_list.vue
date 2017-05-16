@@ -5,13 +5,13 @@
       <span :class="{'close-span': !collapse[0].show}"></span>
     </div>
     <div class="event-box" :style="{'height': 'auto', 'dispaly': 'block'}">
-      <ui>
+      <ul>
         <li class="event-list" v-for="value in getToDo">
           <input type="checkbox" :key="value.id" @click="moveToDone(vaule.id)">
           <div>{{value.content}}</div>
           <button class="cancel-btn" @click="moveCancel(vaule.id)">取消</button>
         </li>
-      </ui>
+      </ul>
     </div>
 
     <div class="event-tab" @click="changeCollapse(1, $event)">

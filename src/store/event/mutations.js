@@ -8,11 +8,9 @@ import * as func from '../function'
 
 export default {
   [type.ADDEVENT] (states, payload) {
-    states.count++
-    payload.items.id = states.count // 新增事件的id号为流水号：1，2，3，4，5...
-    console.log(states.event + '___' + payload)
-    console.dir(payload.items.content)
-    states.event.unshift(payload.id)
+    states.count++ // 取数据库中count计数器+1
+    payload.items.id = states.count // 新增事件的id号为流水号
+    states.event.unshift(payload.items) // 将新增事件放在数据的第一个元素
     func.local.set(states)
   },
   [type.EVENTTODO] (states, payload) {
