@@ -3,6 +3,7 @@
     <nHeader @tools="changePages"></nHeader>
     <section class="container" :class="{'hide': table}">
       <n-add></n-add>
+      <nList></nList>
     </section>
   </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
   import nHeader from './components/header.vue'
   import nAdd from './components/event_add.vue'
+  import nList from './components/event_list.vue'
 
   export default {
     name: 'app',
@@ -29,7 +31,8 @@
     },
     components: {
       nHeader,
-      nAdd
+      nAdd,
+      nList
     },
     methods: {
       changePages () {

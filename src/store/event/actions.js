@@ -9,5 +9,5 @@ export default {
   eventcancel: ({ commit }, payload) => commit('EVENTCANCEL', {id: payload}),
   clearevent: ({ commit }, payload) => commit('CLEAREVENT', {id: payload}),
   delevent: ({ commit }, payload) => commit('DELEVENT', {id: payload}),
-  editevent: ({ commit }, payload) => commit('EDITEVENT', {id: payload}),
+  editevent: ({ commit }, payload) => commit('EDITEVENT', {id: payload})
 }
