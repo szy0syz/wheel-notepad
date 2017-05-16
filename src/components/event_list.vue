@@ -2,7 +2,7 @@
   <div class="event-content">
     <div class="event-tab" @click="changeCollapse(0, $event)">
       未完成
-      <span :class="{'colse-span': !collapse[0].show}"></span>
+      <span :class="{'close-span': !collapse[0].show}"></span>
     </div>
     <div class="event-box" :style="{'height': 'auto', 'dispaly': 'block'}">
       <ui>
@@ -30,7 +30,7 @@
 
     <div class="event-tab" @click="changeCollapse(2, $event)">
       已取消
-      <span :class="{'close-soan': !collapse[2].show}"></span>
+      <span :class="{'close-span': !collapse[2].show}"></span>
     </div>
     <div class="event-box" :class="{'event-box-hide': false}">
       <ul>
@@ -75,24 +75,24 @@
     },
     methods: {
       moveToDo (id) {
-        this.$store.dispatch('eventtodo', id)
+        return this.$store.dispatch('eventtodo', id)
       },
       moveDone (id) {
-        this.$store.dispatch('eventdone', id)
+        return this.$store.dispatch('eventdone', id)
       },
       moveCancel (id) {
-        this.$store.dispatch('eventcancel', id)
+        return this.$store.dispatch('eventcancel', id)
       },
       changeCollapse (num, event) {
         const show = this.collapse[num].show
         if (show) {
-          this.colseCollapse(event)
+          this.closeCollapse(event)
         } else {
           this.openCollapse(event)
         }
         this.collapse[num].show = !show
       },
-      colseCollapse (event) { // 关闭折叠面板
+      closeCollapse (event) { // 关闭折叠面板
         let ulElement = event.currentTarget.nextElementSibling
         let children = ulElement.getElementsByTagName('ul')[0]
         ulElement.style.height = children.offsetHeight + 'px'

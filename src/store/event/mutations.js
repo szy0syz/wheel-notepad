@@ -10,7 +10,9 @@ export default {
   [type.ADDEVENT] (states, payload) {
     states.count++
     payload.items.id = states.count // 新增事件的id号为流水号：1，2，3，4，5...
-    states.event.unshift(payload.items)
+    console.log(states.event + '___' + payload)
+    console.dir(payload.items.content)
+    states.event.unshift(payload.id)
     func.local.set(states)
   },
   [type.EVENTTODO] (states, payload) {
