@@ -4,6 +4,11 @@
     <section class="container" :class="{'hide': table}">
       <n-add></n-add>
       <nList></nList>
+      <nSidebar :is-show="tools"
+                @cleardialog="clearData"
+                @opentable="table = true; tools = false"
+                @opentheme="theme = true; tools = false"
+      ></nSidebar> // 这里子组件通过$emit分发事件cleardialog执行clearData方法
     </section>
   </div>
 </template>
@@ -12,6 +17,8 @@
   import nHeader from './components/header.vue'
   import nAdd from './components/event_add.vue'
   import nList from './components/event_list.vue'
+  import nSidebar from './components/sidebar.vue' // 此时，nSidebar是App的子组件
+  import nDialog from './components/dialog.vue'
 
   export default {
     name: 'app',
@@ -32,7 +39,9 @@
     components: {
       nHeader,
       nAdd,
-      nList
+      nList,
+      nSidebar,
+      nDialog
     },
     methods: {
       changePages () {
@@ -43,6 +52,14 @@
         } else {
           this.tools = !this.tools
         }
+      },
+      clearData () {
+        console.log('我是父组件的this:')
+        console.dir(this)
+        this.tools = false
+        this.dialog = true
+        this.dialog_type = 'clear'
+        this.tips = '清空后无法恢复，确认清空吗？'
       }
     }
   }

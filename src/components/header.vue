@@ -1,6 +1,6 @@
 <template>
   <header class="">
-    <h1>记事本 <a class="t-btn" @click="showTools"></a><span></span></h1>
+    <h1>记事本 <a class="t-btn" @click="showTools"><span></span></a></h1>
   </header>
 </template>
 
