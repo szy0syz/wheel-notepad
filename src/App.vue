@@ -8,7 +8,8 @@
                 @cleardialog="clearData"
                 @opentable="table = true; tools = false"
                 @opentheme="theme = true; tools = false"
-      ></nSidebar> // 这里子组件通过$emit分发事件cleardialog执行clearData方法
+      ></nSidebar>
+      <!--这里子组件通过$emit分发事件cleardialog执行clearData方法-->
     </section>
   </div>
 </template>

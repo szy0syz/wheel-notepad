@@ -104,12 +104,13 @@
         }, 10)
       },
       openCollapse (event) {
-        let ulElement = event.currentTarget.nextElementSubling
-        let children = ulElement.getElementsByTagName('ul')[0]
-        ulElement.style.display = 'block'
-        ulElement.style.height = children.offsetHeight + 'px'
+        // 这里event是MouseEvent的点击事件
+        let ulElement = event.currentTarget.nextElementSibling // 拿到鼠标点击元素的后面一个兄弟元素，也就是ul+li的div
+        let children = ulElement.getElementsByTagName('ul')[0]// 从中取出第一个ul元素
+        ulElement.style.display = 'block' // 设置ul在的那个div味块状显示
+        ulElement.style.height = children.offsetHeight + 'px' // 设置div的高度为ul合集元素自身高度
         setTimeout(function () {
-          ulElement.style.height = 'auto'
+          ulElement.style.height = 'auto' // 延迟300ms让ul的div变成auto高度
         }, 300)
       }
     }
