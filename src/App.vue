@@ -11,6 +11,9 @@
       ></nSidebar>
       <!--这里子组件通过$emit分发事件cleardialog执行clearData方法-->
     </section>
+    <transition name="dialog">
+      <nDialog v-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></nDialog>
+    </transition>
   </div>
 </template>
 
@@ -26,7 +29,7 @@
     data () {
       return {
         tools: false,
-        dialog: false,
+        dialog: false, // 默认不显示弹窗
         table: false,
         theme: false,
         dialog_type: '',
@@ -61,6 +64,18 @@
         this.dialog = true
         this.dialog_type = 'clear'
         this.tips = '清空后无法恢复，确认清空吗？'
+      },
+      sureDialog () {
+        const self = this
+        switch (self.dialog_type) {
+          case 'clear': // 如果是清除数据
+            self.$store.dispatch('clearevent') // 使用store分发action
+            break
+          case 'del':
+            self.$store.dispatch('delevent', self.del_info) // 拿本组件自身data里的属性
+            break
+        }
+        this.dialog = false // 最后隐藏窗口
       }
     }
   }

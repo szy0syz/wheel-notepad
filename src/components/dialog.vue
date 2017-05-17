@@ -20,7 +20,7 @@
     data: function () {
       return {}
     },
-    props: ['msg'],
+    props: ['msg'], // 子组件定义一个属性，待父组件传入
     methods: {
       cancelEvent () {
         this.$emit('cancel')

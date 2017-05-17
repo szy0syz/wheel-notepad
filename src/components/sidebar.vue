@@ -5,7 +5,7 @@
         <button class="tools-btn" @click="openTheme">切换主题</button>
       </li>
       <li>
-        <button class="tools-btn" @click="downloadData('your-data.txt',getDate)">下载数据</button>
+        <button class="tools-btn" @click="downloadData('your-data.txt',getData)">下载数据</button>
       </li>
       <li>
         <button class="tools-btn" @click="openTable">编辑数据</button>
@@ -24,9 +24,9 @@
     },
     props: ['isShow'],
     computed: {
-      getDate () {  // 原版这里写错了
+      getData () {  // 原版这里写错了
         const self = this
-        return JSON.stringify(self.$sotre.state)
+        return JSON.stringify(self.$store.state)
       }
     },
     methods: {
