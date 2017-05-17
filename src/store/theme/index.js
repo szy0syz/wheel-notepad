@@ -3,7 +3,7 @@
  */
 import * as func from '../function'
 import actions from './actions'
-import gettets from './getters'
+import getters from './getters'
 import mutations from './mutations'
 
 const state = func.themeLocal.get() || {theme: 'blue'}
@@ -11,6 +11,6 @@ const state = func.themeLocal.get() || {theme: 'blue'}
 export default {
   state,
   actions,
-  gettets,
-  mutations
+  mutations,
+  getters
 }

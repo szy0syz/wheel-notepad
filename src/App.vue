@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="blue">
+  <div id="app" :class="[getTheme]">
     <nHeader @tools="changePages"></nHeader>
     <section class="container" :class="{'hide': table}">
-      <n-add></n-add>
+      <nAdd></nAdd>
       <nList></nList>
       <nSidebar :is-show="tools"
                 @cleardialog="clearData"
@@ -15,6 +15,7 @@
       <nDialog v-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></nDialog>
     </transition>
     <nTable @deldialog="delData" :is-show="table" @close="table = false"></nTable>
+    <nTheme :is-show="theme" @close="theme = false"></nTheme>
   </div>
 </template>
 
@@ -25,6 +26,7 @@
   import nSidebar from './components/sidebar.vue' // 此时，nSidebar是App的子组件
   import nDialog from './components/dialog.vue'
   import nTable from './components/event_table.vue'
+  import nTheme from './components/theme.vue'
 
   export default {
     name: 'app',
@@ -42,16 +44,22 @@
         }
       }
     },
+    computed: {
+      getTheme () {
+        return this.$store.getters.getTheme
+      }
+    },
     components: {
       nHeader,
       nAdd,
       nList,
       nSidebar,
       nDialog,
-      nTable
+      nTable,
+      nTheme
     },
     methods: {
-      changePages () {
+      changePages () { // 在点左上角时，显示窗体功能。
         if (this.table) {
           this.table = !this.table
         } else if (this.theme) {
