@@ -14,6 +14,7 @@
     <transition name="dialog">
       <nDialog v-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></nDialog>
     </transition>
+    <nTable @deldialog="delData" :is-show="table" @close="table = false"></nTable>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
   import nList from './components/event_list.vue'
   import nSidebar from './components/sidebar.vue' // 此时，nSidebar是App的子组件
   import nDialog from './components/dialog.vue'
+  import nTable from './components/event_table.vue'
 
   export default {
     name: 'app',
@@ -45,7 +47,8 @@
       nAdd,
       nList,
       nSidebar,
-      nDialog
+      nDialog,
+      nTable
     },
     methods: {
       changePages () {
@@ -64,6 +67,16 @@
         this.dialog = true
         this.dialog_type = 'clear'
         this.tips = '清空后无法恢复，确认清空吗？'
+      },
+      delData (index, id) {
+        console.log(id)
+        this.dialog = true
+        this.dialog_type = 'del'
+        this.tips = '删除后无法恢复，确认删除吗？'
+        this.del_info = {
+          index: index,
+          id: id
+        }
       },
       sureDialog () {
         const self = this

@@ -57,6 +57,7 @@ export default {
     func.local.clear()
   },
   [type.DELEVENT] (states, payload) {
+    console.dir(payload)
     if (states.event[payload.index].id === payload.id) {
       states.event.splice(payload.index, 1)
     } else {

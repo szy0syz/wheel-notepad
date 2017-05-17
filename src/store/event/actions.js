@@ -7,7 +7,7 @@ export default {
   eventdone: ({ commit }, payload) => commit('EVENTDONE', {id: payload}),
   eventtodo: ({ commit }, payload) => commit('EVENTTODO', {id: payload}),
   eventcancel: ({ commit }, payload) => commit('EVENTCANCEL', {id: payload}),
-  clearevent: ({ commit }, payload) => commit('CLEAREVENT', {id: payload}),
-  delevent: ({ commit }, payload) => commit('DELEVENT', {id: payload}),
-  editevent: ({ commit }, payload) => commit('EDITEVENT', {id: payload})
+  clearevent: ({ commit }) => commit('CLEAREVENT'),
+  delevent: ({ commit }, payload) => commit('DELEVENT', payload),
+  editevent: ({ commit }, payload) => commit('EDITEVENT', payload)
 }
