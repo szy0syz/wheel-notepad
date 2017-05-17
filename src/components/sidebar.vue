@@ -24,7 +24,7 @@
     },
     props: ['isShow'],
     computed: {
-      getData () {  // 原版这里写错了
+      getData () {  // 原版这里写错了 ****
         const self = this
         return JSON.stringify(self.$store.state)
       }
