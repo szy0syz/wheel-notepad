@@ -69,8 +69,6 @@
         }
       },
       clearData () {
-        console.log('我是父组件的this:')
-        console.dir(this)
         this.tools = false
         this.dialog = true
         this.dialog_type = 'clear'

@@ -31,8 +31,6 @@
     },
     methods: {
       showDialog () {
-        console.log('我是子组件的this:')
-        console.dir(this)
         this.$emit('cleardialog') // 在子组件里，分发'cleardialog'这个事件，会冒泡传递到父附件的'cleardialog'属性上的方法执行
       },
       openTable () {
