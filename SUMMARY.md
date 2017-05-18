@@ -25,3 +25,7 @@ Vuex的运行流程
 - 父子组件通讯。在父组件的template中`<nDialog :msg="tips"></nDialog>`；子组件中，`props: ['msg']`。这样就在子组件中就可以使用由父组件传递进来`msg`变量。原则就是，父组件定义子组件时，在标签里提前预留一个标签，然后在子组件中定义一个属性数组接收，但要用引号引起属性名！
 
 - 子组件调用父组件事件。在子组件的`methods`里定义方法，执行`this.$emit('cancel')`。此时子组件就会冒泡发散`cancel`这个动作；我们又得现在父组件定义子组件写`v-on:sure="sureDialog"`，提前监听sure事件。这样子组件就可以调用到父组件的方法。
+
+- Vuex中，可以把sates的状态封装读写放到一个数据访问接口中。
+
+- localStore，话说这个HTML5 API真的很给力嘛。简单几个`getItem`，`setItem`和`removeItem`方法就搞定，其他真没什么说的。
