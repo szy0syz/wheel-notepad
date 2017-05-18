@@ -15,28 +15,28 @@
             <div class="div-option" @click="doSelect(3)">已取消</div>
           </div>
         </div>
-        <input type="text" class="div-search" v-model="screen_title" placeholder="筛选关键词">
+        <input type="text" class="div-search" v-model="screen_title" placeholder="筛选关键词" @keyup.esc="clearInput">
       </div>
       <table class="event-table">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>所有事项</th>
-            <th width="">类型</th>
-            <th width="">操作</th>
-          </tr>
+        <tr>
+          <th>#</th>
+          <th>所有事项</th>
+          <th width="">类型</th>
+          <th width="">操作</th>
+        </tr>
         </thead>
         <tbody>
-          <!--原版这里有拼写错误-->
-          <tr v-for="(value, index) in notepad">
-            <td align="center">{{index + 1}}</td>
-            <td align="center">{{value.content}}</td>
-            <td align="center">{{getType(value.type)}}</td>
-            <td align="center" style="font-size: 0;">
-              <button @click="showInput(index)">编辑</button>
-              <button class="del-btn" @click="showDialog(index, value.id)">删除</button>
-            </td>
-          </tr>
+        <!--原版这里有拼写错误-->
+        <tr v-for="(value, index) in notepad">
+          <td align="center">{{index + 1}}</td>
+          <td align="center">{{value.content}}</td>
+          <td align="center">{{getType(value.type)}}</td>
+          <td align="center" style="font-size: 0;">
+            <button @click="showInput(index)">编辑</button>
+            <button class="del-btn" @click="showDialog(index, value.id)">删除</button>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -120,167 +120,170 @@
       },
       closeTable () {
         this.$emit('close')
+      },
+      clearInput () {
+        this.screen_title = ''
       }
     }
   }
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-  .event-all{
+  .event-all {
     position: absolute;
-    left:0px;
-    top:70px;
-    right:0;
-    bottom:0;
+    left: 0px;
+    top: 70px;
+    right: 0;
+    bottom: 0;
     transform: translateX(-100%);
     transition: transform .5s;
     overflow-Y: scroll;
     background: #fff;
-    &.event-all-show{
+    &.event-all-show {
       transform: translateX(0);
     }
-    &::-webkit-scrollbar{
-      width:0;
+    &::-webkit-scrollbar {
+      width: 0;
     }
-    .table-box{
-      width:100%;
-      max-width:1000px;
+    .table-box {
+      width: 100%;
+      max-width: 1000px;
       margin: 20px auto;
-      .event-table{
-        width:100%;
-        padding:0;
-        border:{
-          left:1px solid #eee;
-          top:1px solid #eee;
+      .event-table {
+        width: 100%;
+        padding: 0;
+        border: {
+          left: 1px solid #eee;
+          top: 1px solid #eee;
         }
         border-spacing: 0px;
-        td,th{
+        td, th {
           position: relative;
           height: 40px;
           min-width: 0;
-          padding:5px 10px;
+          padding: 5px 10px;
           box-sizing: border-box;
           text-overflow: ellipsis;
           vertical-align: middle;
-          border:{
-            right:1px solid #eee;
-            bottom:1px solid #eee;
+          border: {
+            right: 1px solid #eee;
+            bottom: 1px solid #eee;
           }
         }
-        button{
-          padding:3px 7px;
+        button {
+          padding: 3px 7px;
           font-size: 12px;
           color: #fff;
-          border:0;
+          border: 0;
           margin: 0 3px 3px 0;
-          &.del-btn{
+          &.del-btn {
             background: #f57067 !important;
           }
         }
       }
-      .edit-input{
+      .edit-input {
         position: fixed;
-        top:0;
-        width:100%;
+        top: 0;
+        width: 100%;
         max-width: 1000px;
-        margin:auto;
-        height:60px;
-        padding:10px 100px 10px 10px;
+        margin: auto;
+        height: 60px;
+        padding: 10px 100px 10px 10px;
         box-sizing: border-box;
-        z-index:10;
+        z-index: 10;
         transform: translateY(-260px);
         transition: transform .3s;
         background: #f3f3f3;
-        border:1px solid #eee;
-        border-radius:4px;
-        &.edit-input-show{
+        border: 1px solid #eee;
+        border-radius: 4px;
+        &.edit-input-show {
           transform: translateY(0);
         }
-        input{
+        input {
           float: left;
-          width:100%;
-          height:40px;
-          padding:5px 10px;
+          width: 100%;
+          height: 40px;
+          padding: 5px 10px;
           box-sizing: border-box;
           border: 1px solid #ddd;
         }
-        button{
+        button {
           position: absolute;
           right: 10px;
-          width:80px;
-          height:40px;
+          width: 80px;
+          height: 40px;
           color: #fff;
-          border:0;
+          border: 0;
         }
       }
-      .screen-box{
+      .screen-box {
         position: relative;
         padding: 0 0 10px 95px;
-        height:35px;
-        .div-select{
+        height: 35px;
+        .div-select {
           position: absolute;
-          left:0;
-          top:0;
-          width:85px;
-          height:35px;
-          padding:0 10px;
+          left: 0;
+          top: 0;
+          width: 85px;
+          height: 35px;
+          padding: 0 10px;
           box-sizing: border-box;
-          border:1px solid #eee;
-          font-size:12px;
+          border: 1px solid #eee;
+          font-size: 12px;
           color: #999;
           cursor: pointer;
-          &:after{
+          &:after {
             position: absolute;
-            right:6px;
-            top:12px;
-            width:6px;
-            height:6px;
+            right: 6px;
+            top: 12px;
+            width: 6px;
+            height: 6px;
             content: '';
-            border:{
-              right:1px solid #999;
+            border: {
+              right: 1px solid #999;
               bottom: 1px solid #999;
             }
             transform: rotate(45deg);
           }
-          &.active{
-            .div-select-body{
-              height:122px;
-              border:1px solid #eee;
+          &.active {
+            .div-select-body {
+              height: 122px;
+              border: 1px solid #eee;
               box-shadow: 0 0 1px #ddd;
             }
           }
         }
-        .div-value{
+        .div-value {
           line-height: 35px;
 
         }
-        .div-select-body{
+        .div-select-body {
           position: absolute;
-          left:0;
-          top:38px;
-          width:85px;
-          height:0;
+          left: 0;
+          top: 38px;
+          width: 85px;
+          height: 0;
           padding-left: 10px;
           line-height: 30px;
           box-sizing: border-box;
           overflow: hidden;
-          z-index:10;
+          z-index: 10;
           box-shadow: none;
           border: none;
           border-radius: 3px;
           background: #fff;
           transition: all .3s;
         }
-        .div-search{
-          width:100%;
-          height:35px;
+        .div-search {
+          width: 100%;
+          height: 35px;
           line-height: 25px;
-          padding:5px 10px;
+          padding: 5px 10px;
           box-sizing: border-box;
-          border:1px solid #eee;
-          font:{
-            size:12px;
-            family: Arial,'Microsoft YaHei';
+          border: 1px solid #eee;
+          font: {
+            size: 12px;
+            family: Arial, 'Microsoft YaHei';
           }
           color: #999;
         }

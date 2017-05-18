@@ -1,6 +1,6 @@
 <template>
  <div class="event-add">
-   <input type="text" class="n-input" v-model="content" placeholder="待办事项" @keyup.enter="submit">
+   <input type="text" class="n-input" v-model="content" placeholder="待办事项" @keyup.enter="submit" @keyup.esc="clearInput">
    <button class="add-btn" @click="submit">提交</button>
  </div>
 </template>
@@ -27,6 +27,9 @@
           self.$store.dispatch('addevent', params)  // 以载荷形式分发action
           self.content = ''
         }
+      },
+      clearInput () {
+        this.content = ''
       }
     }
   }
